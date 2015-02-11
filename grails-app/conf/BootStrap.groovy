@@ -1,3 +1,4 @@
+import com.health.logger.usermanagement.RequestMap
 import com.health.logger.usermanagement.Role
 import com.health.logger.usermanagement.User
 import com.health.logger.usermanagement.UserRole
@@ -18,7 +19,21 @@ class BootStrap {
             assert Role.count() == 2
             assert UserRole.count() == 1
         }
+        initRequestMap();
     }
     def destroy = {
+    }
+
+    def initRequestMap(){
+        if(RequestMap.count()==0) {
+            for (String url in [
+                    '/', '/index', '/index.gsp', '/**/favicon.ico',
+                    '/assets/**', '/**/js/**', '/**/css/**', '/**/images/**',
+                    '/login', '/login.*', '/login/*',
+                    '/logout', '/logout.*', '/logout/*']) {
+                new RequestMap(url: url, configAttribute: 'permitAll').save()
+            }
+            new RequestMap(url: '/menu/**', configAttribute: 'ROLE_ADMIN').save()
+        }
     }
 }

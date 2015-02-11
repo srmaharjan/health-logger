@@ -201,25 +201,3 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.health.log
 grails.plugin.springsecurity.authority.className = 'com.health.logger.usermanagement.Role'
 grails.plugin.springsecurity.requestMap.className = 'com.health.logger.usermanagement.RequestMap'
 grails.plugin.springsecurity.securityConfigType = 'Requestmap'
-grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
-	'/assets/**':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
-]
-
-grails.plugin.springsecurity.interceptUrlMap = [
-        '/':                  ['permitAll'],
-        '/index':             ['permitAll'],
-        '/index.gsp':         ['permitAll'],
-        '/**/js/**':          ['permitAll'],
-        '/**/css/**':         ['permitAll'],
-        '/**/images/**':      ['permitAll'],
-        '/**/favicon.ico':    ['permitAll'],
-        '/login/**':          ['permitAll'],
-        '/logout/**':         ['permitAll']
-]
