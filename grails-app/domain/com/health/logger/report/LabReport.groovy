@@ -1,6 +1,6 @@
 package com.health.logger.report
 
-import com.healthlogger.customer.Patient
+import com.health.logger.customer.Patient
 
 class LabReport {
 

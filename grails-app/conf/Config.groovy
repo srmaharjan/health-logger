@@ -115,3 +115,111 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+// Added by the JQuery Validation UI plugin:
+jqueryValidationUi {
+	errorClass = 'error'
+	validClass = 'valid'
+	onsubmit = true
+	renderErrorsOnTop = false
+	
+	qTip {
+		packed = true
+	  classes = 'ui-tooltip-red ui-tooltip-shadow ui-tooltip-rounded'  
+	}
+	
+	/*
+	  Grails constraints to JQuery Validation rules mapping for client side validation.
+	  Constraint not found in the ConstraintsMap will trigger remote AJAX validation.
+	*/
+	StringConstraintsMap = [
+		blank:'required', // inverse: blank=false, required=true
+		creditCard:'creditcard',
+		email:'email',
+		inList:'inList',
+		minSize:'minlength',
+		maxSize:'maxlength',
+		size:'rangelength',
+		matches:'matches',
+		notEqual:'notEqual',
+		url:'url',
+		nullable:'required',
+		unique:'unique',
+		validator:'validator'
+	]
+	
+	// Long, Integer, Short, Float, Double, BigInteger, BigDecimal
+	NumberConstraintsMap = [
+		min:'min',
+		max:'max',
+		range:'range',
+		notEqual:'notEqual',
+		nullable:'required',
+		inList:'inList',
+		unique:'unique',
+		validator:'validator'
+	]
+	
+	CollectionConstraintsMap = [
+		minSize:'minlength',
+		maxSize:'maxlength',
+		size:'rangelength',
+		nullable:'required',
+		validator:'validator'
+	]
+	
+	DateConstraintsMap = [
+		min:'minDate',
+		max:'maxDate',
+		range:'rangeDate',
+		notEqual:'notEqual',
+		nullable:'required',
+		inList:'inList',
+		unique:'unique',
+		validator:'validator'
+	]
+	
+	ObjectConstraintsMap = [
+		nullable:'required',
+		validator:'validator'
+	]
+	
+	CustomConstraintsMap = [
+		phone:'true', // International phone number validation
+		phoneUS:'true',
+		alphanumeric:'true',
+		letterswithbasicpunc:'true',
+    lettersonly:'true'
+	]	
+}
+
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.health.logger.usermanagement.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.health.logger.usermanagement.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.health.logger.usermanagement.Role'
+grails.plugin.springsecurity.requestMap.className = 'com.health.logger.usermanagement.RequestMap'
+grails.plugin.springsecurity.securityConfigType = 'Requestmap'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/assets/**':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll']
+]
+
+grails.plugin.springsecurity.interceptUrlMap = [
+        '/':                  ['permitAll'],
+        '/index':             ['permitAll'],
+        '/index.gsp':         ['permitAll'],
+        '/**/js/**':          ['permitAll'],
+        '/**/css/**':         ['permitAll'],
+        '/**/images/**':      ['permitAll'],
+        '/**/favicon.ico':    ['permitAll'],
+        '/login/**':          ['permitAll'],
+        '/logout/**':         ['permitAll']
+]

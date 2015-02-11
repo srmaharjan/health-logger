@@ -1,10 +1,10 @@
 package com.health.logger.customer
 
-import com.healthlogger.clinical.AcuteDisease
-import com.healthlogger.clinical.ChronicDisease
-import com.healthlogger.clinical.Doctor
-import com.healthlogger.clinical.Medication
-import com.healthlogger.report.LabReport
+import com.health.logger.clinical.AcuteDisease
+import com.health.logger.clinical.ChronicDisease
+import com.health.logger.clinical.Doctor
+import com.health.logger.clinical.Medication
+import com.health.logger.report.LabReport
 
 class Patient {
     String firstName

@@ -1,6 +1,6 @@
 package com.health.logger.clinical
 
-import com.healthlogger.customer.Patient
+import com.health.logger.customer.Patient
 
 class AcuteDisease {
     String name
