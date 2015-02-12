@@ -1,20 +1,20 @@
 package com.health.logger.usermanagement
 
-class Menu {
+class ModuleMenu {
     String displayName;
     String code;
-    String cName; //controllerName
-    String aName; //actionName
+    String moduleController; //controllerName
+    String moduleAction; //actionName
     String icon;
     float displayOrder;
 
-    static  belongsTo = [parent:Menu]
-    static hasMany = ['child':Menu]
+    static  belongsTo = [parent:ModuleMenu]
+    static hasMany = ['child':ModuleMenu]
 
     static constraints = {
         code(nullable: false,blank: false,unique: true)
-        cName(nullable: true,blank: true)
-        aName(nullable: true,blank: true)
+        moduleController(nullable: true,blank: true)
+        moduleAction(nullable: true,blank: true)
         icon(nullable: true,blank: true)
         parent(nullable: true,blank: true)
         child(nullable: true,blank: true)

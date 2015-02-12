@@ -4,9 +4,9 @@ package com.health.logger.usermanagement
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(MenuController)
+@TestFor(ModuleMenuController)
 @Mock(ModuleMenu)
-class MenuControllerSpec extends Specification {
+class ModuleMenuControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -20,8 +20,8 @@ class MenuControllerSpec extends Specification {
         controller.index()
 
         then: "The model is correct"
-        !model.menuInstanceList
-        model.menuInstanceCount == 0
+        !model.moduleMenuInstanceList
+        model.moduleMenuInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -29,7 +29,7 @@ class MenuControllerSpec extends Specification {
         controller.create()
 
         then: "The model is correctly created"
-        model.menuInstance != null
+        model.moduleMenuInstance != null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -37,23 +37,23 @@ class MenuControllerSpec extends Specification {
         when: "The save action is executed with an invalid instance"
         request.contentType = FORM_CONTENT_TYPE
         request.method = 'POST'
-        def menu = new ModuleMenu()
-        menu.validate()
-        controller.save(menu)
+        def moduleMenu = new ModuleMenu()
+        moduleMenu.validate()
+        controller.save(moduleMenu)
 
         then: "The create view is rendered again with the correct model"
-        model.menuInstance != null
+        model.moduleMenuInstance != null
         view == 'create'
 
         when: "The save action is executed with a valid instance"
         response.reset()
         populateValidParams(params)
-        menu = new ModuleMenu(params)
+        moduleMenu = new ModuleMenu(params)
 
-        controller.save(menu)
+        controller.save(moduleMenu)
 
         then: "A redirect is issued to the show action"
-        response.redirectedUrl == '/menu/show/1'
+        response.redirectedUrl == '/moduleMenu/show/1'
         controller.flash.message != null
         ModuleMenu.count() == 1
     }
@@ -67,11 +67,11 @@ class MenuControllerSpec extends Specification {
 
         when: "A domain instance is passed to the show action"
         populateValidParams(params)
-        def menu = new ModuleMenu(params)
-        controller.show(menu)
+        def moduleMenu = new ModuleMenu(params)
+        controller.show(moduleMenu)
 
         then: "A model is populated containing the domain instance"
-        model.menuInstance == menu
+        model.moduleMenuInstance == moduleMenu
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -83,11 +83,11 @@ class MenuControllerSpec extends Specification {
 
         when: "A domain instance is passed to the edit action"
         populateValidParams(params)
-        def menu = new ModuleMenu(params)
-        controller.edit(menu)
+        def moduleMenu = new ModuleMenu(params)
+        controller.edit(moduleMenu)
 
         then: "A model is populated containing the domain instance"
-        model.menuInstance == menu
+        model.moduleMenuInstance == moduleMenu
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -97,28 +97,28 @@ class MenuControllerSpec extends Specification {
         controller.update(null)
 
         then: "A 404 error is returned"
-        response.redirectedUrl == '/menu/index'
+        response.redirectedUrl == '/moduleMenu/index'
         flash.message != null
 
 
         when: "An invalid domain instance is passed to the update action"
         response.reset()
-        def menu = new ModuleMenu()
-        menu.validate()
-        controller.update(menu)
+        def moduleMenu = new ModuleMenu()
+        moduleMenu.validate()
+        controller.update(moduleMenu)
 
         then: "The edit view is rendered again with the invalid instance"
         view == 'edit'
-        model.menuInstance == menu
+        model.moduleMenuInstance == moduleMenu
 
         when: "A valid domain instance is passed to the update action"
         response.reset()
         populateValidParams(params)
-        menu = new ModuleMenu(params).save(flush: true)
-        controller.update(menu)
+        moduleMenu = new ModuleMenu(params).save(flush: true)
+        controller.update(moduleMenu)
 
         then: "A redirect is issues to the show action"
-        response.redirectedUrl == "/menu/show/$menu.id"
+        response.redirectedUrl == "/moduleMenu/show/$moduleMenu.id"
         flash.message != null
     }
 
@@ -129,23 +129,23 @@ class MenuControllerSpec extends Specification {
         controller.delete(null)
 
         then: "A 404 is returned"
-        response.redirectedUrl == '/menu/index'
+        response.redirectedUrl == '/moduleMenu/index'
         flash.message != null
 
         when: "A domain instance is created"
         response.reset()
         populateValidParams(params)
-        def menu = new ModuleMenu(params).save(flush: true)
+        def moduleMenu = new ModuleMenu(params).save(flush: true)
 
         then: "It exists"
         ModuleMenu.count() == 1
 
         when: "The domain instance is passed to the delete action"
-        controller.delete(menu)
+        controller.delete(moduleMenu)
 
         then: "The instance is deleted"
         ModuleMenu.count() == 0
-        response.redirectedUrl == '/menu/index'
+        response.redirectedUrl == '/moduleMenu/index'
         flash.message != null
     }
 }

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta name="layout" content="bootstrap">
-	<g:set var="entityName" value="${message(code: 'menu.label', default: 'Menu')}" />
+	<g:set var="entityName" value="${message(code: 'moduleMenu.label', default: 'ModuleMenu')}" />
 	<title><g:message code="default.create.label" args="[entityName]" /></title>
 </head>
 <body>
@@ -15,18 +15,18 @@
 <section class="content">
 	<div class="row">
 		<section class="col-lg-12 connectedSortable">
-			<div id="create-menu" class="box box-primary" role="main">
+			<div id="create-moduleMenu" class="box box-primary" role="main">
 				<g:if test="${flash.message}">
 					<div class="message" role="status">${flash.message}</div>
 				</g:if>
-				<g:hasErrors bean="${menuInstance}">
+				<g:hasErrors bean="${moduleMenuInstance}">
 					<ul class="errors" role="alert">
-						<g:eachError bean="${menuInstance}" var="error">
+						<g:eachError bean="${moduleMenuInstance}" var="error">
 							<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 						</g:eachError>
 					</ul>
 				</g:hasErrors>
-				<g:form class="form-horizontal" url="[resource:menuInstance, action:'save']" >
+				<g:form class="form-horizontal" url="[resource:moduleMenuInstance, action:'save']" >
 				<div class="box-body">
 					<g:render template="form"/>
 				</div>
