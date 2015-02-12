@@ -17,12 +17,22 @@
 		<section class="col-lg-12 connectedSortable">
 			<div id="create-${domainClass.propertyName}" class="box box-primary" role="main">
 				<g:if test="\${flash.message}">
-					<div class="message" role="status">\${flash.message}</div>
+					<div class="alert alert-info alert-dismissable">
+						<i class="fa fa-info"></i>
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						\${flash.message}
+					</div>
 				</g:if>
 				<g:hasErrors bean="\${${propertyName}}">
 					<ul class="errors" role="alert">
 						<g:eachError bean="\${${propertyName}}" var="error">
-							<li <g:if test="\${error in org.springframework.validation.FieldError}">data-field-id="\${error.field}"</g:if>><g:message error="\${error}"/></li>
+							<li <g:if test="\${error in org.springframework.validation.FieldError}">data-field-id="\${error.field}"</g:if>>
+								<div class="alert alert-danger alert-dismissable">
+									<i class="fa fa-ban"></i>
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+									<g:message error="\${error}"/>
+								</div>
+							</li>
 						</g:eachError>
 					</ul>
 				</g:hasErrors>

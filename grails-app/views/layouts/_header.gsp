@@ -202,33 +202,35 @@
                         </li>
                     </ul>
                 </li>
-                <!-- User Account: style can be found in dropdown.less -->
-                <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="glyphicon glyphicon-user"></i>
-                        <span><sec:loggedInUserInfo field="userName"/> <i class="caret"></i></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!-- User image -->
-                        <li class="user-header bg-light-blue">
-                            <img src="img/avatar3.png" class="img-circle" alt="User Image" />
-                            <p>
-                                Jane Doe - Web Developer
-                                <small>Member since Nov. 2012</small>
-                            </p>
-                        </li>
+            <!-- User Account: style can be found in dropdown.less -->
+                <sec:ifLoggedIn>
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span><sec:loggedInUserInfo field="username"/> <i class="caret"></i></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header bg-light-blue">
+                                <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                                <p>
+                                    Jane Doe - Web Developer
+                                    <small>Member since Nov. 2012</small>
+                                </p>
+                            </li>
 
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </sec:ifLoggedIn>
             </ul>
         </div>
     </nav>

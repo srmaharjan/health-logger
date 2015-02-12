@@ -28,6 +28,7 @@
             </a>
         </li>
         <hl:menu/>
+    <li class="treeview"><a href="#"><i class="fa fa-edit"></i> <span>Test-Allowed</span><i class="fa fa-angle-left pull-right"></i></a><ul class="treeview-menu"><li><a href="//test/list"><i class="fa fa-th"></i> <span>Child</span></a></li>/ul></li><li><a href="//test3/index"><i class="fa fa-th"></i> <span>Test-Single</span></a></li>
         %{--<li>--}%
         %{--<a href="pages/widgets.html">--}%
         %{--<i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small>--}%

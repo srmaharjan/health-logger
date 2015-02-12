@@ -1,3 +1,4 @@
+import com.health.logger.usermanagement.ModuleMenu
 import com.health.logger.usermanagement.RequestMap
 import com.health.logger.usermanagement.Role
 import com.health.logger.usermanagement.User
@@ -33,7 +34,16 @@ class BootStrap {
                     '/logout', '/logout.*', '/logout/*']) {
                 new RequestMap(url: url, configAttribute: 'permitAll').save()
             }
-            new RequestMap(url: '/menu/**', configAttribute: 'ROLE_ADMIN').save()
+            new RequestMap(url: '/moduleMenu/**', configAttribute: 'ROLE_ADMIN').save()
+        }
+    }
+
+    def initModuleMenu(){
+        if(!ModuleMenu.findByCode('module_menu')){
+            def main=new ModuleMenu(code: 'module_menu',displayName: "Module Menu",displayOrder: 1,icon: 'fa fa-th-list')
+            main.save();
+            new ModuleMenu(code: 'module_menu_new',displayName: "New",displayOrder: 1.1,icon: 'fa fa-windows',moduleAction: "create",moduleController: 'moduleMenu',parent: main).save();
+            new ModuleMenu(code: 'module_menu_list',displayName: "List",displayOrder: 1.2,icon: 'fa fa-bars',moduleAction: "index",moduleController: 'moduleMenu',parent: main).save();
         }
     }
 }

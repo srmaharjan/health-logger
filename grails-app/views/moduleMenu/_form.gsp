@@ -43,25 +43,7 @@
 		<g:message code="moduleMenu.parent.label" default="Parent" />
 		
 	</label>
-	<div class="col-xs-10"><g:select id="parent" name="parent.id" from="${com.health.logger.usermanagement.ModuleMenu.list()}" optionKey="id" value="${moduleMenuInstance?.parent?.id}" class="form-control" noSelection="['null': '']"/></div>
-
-</div>
-
-<div class="form-group ${hasErrors(bean: moduleMenuInstance, field: 'child', 'error')} ">
-	<label for="child" class="col-xs-2">
-		<g:message code="moduleMenu.child.label" default="Child" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${moduleMenuInstance?.child?}" var="c">
-    <li><g:link controller="moduleMenu" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="moduleMenu" action="create" params="['moduleMenu.id': moduleMenuInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'moduleMenu.label', default: 'ModuleMenu')])}</g:link>
-</li>
-</ul>
-
+	<div class="col-xs-10"><g:select id="parent" name="parent.id" from="${com.health.logger.usermanagement.ModuleMenu.findAllByParentIsNull()}" optionKey="id" optionValue="displayName" value="${moduleMenuInstance?.parent?.id}" class="form-control" noSelection="['null': '']"/></div>
 
 </div>
 

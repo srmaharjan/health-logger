@@ -4,7 +4,7 @@ import com.health.logger.usermanagement.ModuleMenu
 
 class AppUtilsTagLib {
     def springSecurityService
-    static defaultEncodeAs = [taglib: 'html']
+//    static defaultEncodeAs = [taglib: 'html']
     //static encodeAsForTags = [tagName: [taglib:'html'], otherTagName: [taglib:'none']]
     static namespace = "hl"
 
@@ -37,7 +37,7 @@ class AppUtilsTagLib {
                 sb.append(childMenu)
             }
             if(count>0){
-                sb.append("/ul></li>")
+                sb.append("</ul></li>")
             }else{
                 sb = new StringBuilder("");
             }
@@ -47,11 +47,11 @@ class AppUtilsTagLib {
     }
     private String createChildMenu(ModuleMenu child){
         StringBuilder sb=new StringBuilder("")
-        def url = createLink(controller: child.moduleController, action: child.moduleAction)
-        if (sec.access(url: url)) {
+        def url = createLink(controller: child.moduleController, action: child.moduleAction, base: '/')
+        if (sec.access(url: url,"true")=="true") {
             def icon = child.icon ?: 'fa fa-folder'
             sb.append("<li>")
-            sb.append("<a href=\"${url}\">")
+            sb.append("<a href=\"${createLink(controller: child.moduleController, action: child.moduleAction)}\">")
             sb.append("<i class=\"${icon}\"></i> <span>${child.displayName}</span>")
             sb.append("</a>")
             sb.append("</li>")

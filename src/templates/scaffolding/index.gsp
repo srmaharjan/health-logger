@@ -18,7 +18,11 @@
 		<div class="box">
 			<div class="box-body table-responsive no-padding">
 				<g:if test="\${flash.message}">
-					<div class="message" role="status">\${flash.message}</div>
+					<div class="alert alert-info alert-dismissable">
+						<i class="fa fa-info"></i>
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						\${flash.message}
+					</div>
 				</g:if>
                 <g:render template="list"/>
 			</div>
