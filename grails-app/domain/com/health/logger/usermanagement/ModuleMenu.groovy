@@ -19,4 +19,7 @@ class ModuleMenu {
         parent(nullable: true,blank: true)
         child(nullable: true,blank: true)
     }
+    String toString(){
+        return displayName
+    }
 }

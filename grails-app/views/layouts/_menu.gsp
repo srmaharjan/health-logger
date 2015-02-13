@@ -28,7 +28,6 @@
             </a>
         </li>
         <hl:menu/>
-    <li class="treeview"><a href="#"><i class="fa fa-edit"></i> <span>Test-Allowed</span><i class="fa fa-angle-left pull-right"></i></a><ul class="treeview-menu"><li><a href="//test/list"><i class="fa fa-th"></i> <span>Child</span></a></li>/ul></li><li><a href="//test3/index"><i class="fa fa-th"></i> <span>Test-Single</span></a></li>
         %{--<li>--}%
         %{--<a href="pages/widgets.html">--}%
         %{--<i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small>--}%
@@ -110,8 +109,8 @@
         %{--</li>--}%
         <li>
             <a href="http://almsaeedstudio.com/preview" target="_blank">
-                <i class="fa fa-envelope"></i> <span>Template Examplte</span>
-                <small class="badge pull-right bg-yellow">12</small>
+                <i class="fa fa-envelope"></i> <span>Used Template</span>
+                <small class="badge pull-right bg-yellow">:D</small>
             </a>
         </li>
     </ul>
