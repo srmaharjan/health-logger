@@ -7,6 +7,9 @@ import com.health.logger.usermanagement.UserRole
 class BootStrap {
 
     def init = { servletContext ->
+
+        initRequestMap();
+        initModuleMenu();
         if(User.count()==0) {
             def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush: true)
             def userRole = new Role(authority: 'ROLE_USER').save(flush: true)
@@ -20,7 +23,6 @@ class BootStrap {
             assert Role.count() == 2
             assert UserRole.count() == 1
         }
-        initRequestMap();
     }
     def destroy = {
     }
