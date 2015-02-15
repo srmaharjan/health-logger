@@ -30,7 +30,7 @@ class BootStrap {
 
         UserRole.create superman, superRole, true
 
-        def admin = new User(username: 'admin', password: '!am@Admin')
+        def admin = new User(username: 'admin', password: 'admin')
         admin.save(flush: true)
 
         UserRole.create admin, adminRole, true

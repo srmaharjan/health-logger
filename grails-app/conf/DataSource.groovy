@@ -17,12 +17,12 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "update"//"update" // one of 'create', 'create-drop','update'
+            dbCreate = "create"//"update" // one of 'create', 'create-drop','update'
             driverClassName = "com.mysql.jdbc.Driver"
-            url = "jdbc:mysql://localhost/health_logger_dev?zeroDateTimeBehavior=convertToNull"
+            url = "jdbc:mysql://localhost/health_logger?zeroDateTimeBehavior=convertToNull"
             pooled = true
             username="root"
-            password="2131"
+            password=""
             loggingSql=false
         }
     }
