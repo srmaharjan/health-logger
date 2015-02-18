@@ -36,7 +36,7 @@
 						</g:eachError>
 					</ul>
 				</g:hasErrors>
-				<g:form class="form-horizontal" url="[resource:patientInstance, action:'update']" method="PUT" >
+				<g:form class="form-horizontal"  enctype="multipart/form-data" url="[resource:patientInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${patientInstance?.version}" />
 				<div class="box-body">
 					<g:render template="form"/>

@@ -201,6 +201,6 @@ grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.health.log
 grails.plugin.springsecurity.authority.className = 'com.health.logger.usermanagement.Role'
 grails.plugin.springsecurity.requestMap.className = 'com.health.logger.usermanagement.RequestMap'
 grails.plugin.springsecurity.securityConfigType = 'Requestmap'
-
+grails.plugin.springsecurity.logout.postOnly = false
 //Fix grails taglib <g:paginate/> to work with bootstrap css.
 grails.plugins.twitterbootstrap.fixtaglib = true

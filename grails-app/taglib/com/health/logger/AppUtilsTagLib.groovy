@@ -16,6 +16,23 @@ class AppUtilsTagLib {
         }
     }
 
+    def chosen = {attrs,body->
+        def out = out;
+        def id=attrs.remove('id')
+        def notSelectIcon = attrs.notSelectIcon?:false
+        out << """
+            <script>
+                jQuery(function () {
+                    var properties = {allow_single_deselect: true}
+                    if($notSelectIcon){
+                        jQuery('#${id}').chosen(properties);
+                    }else{
+                        jQuery('#${id}').chosen();
+                    }
+                });
+        </script>"""
+    }
+
     private String createModuleMenu(ModuleMenu parent) {
         StringBuilder sb = new StringBuilder("");
         if (!parent.child) {

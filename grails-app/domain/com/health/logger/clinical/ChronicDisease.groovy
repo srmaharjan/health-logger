@@ -18,4 +18,8 @@ class ChronicDisease {
     static hasMany = [patient: Patient]
 
     static belongsTo = [Patient]
+
+    String toString(){
+        return name
+    }
 }

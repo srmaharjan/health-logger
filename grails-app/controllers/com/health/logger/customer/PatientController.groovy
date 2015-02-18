@@ -1,15 +1,36 @@
 package com.health.logger.customer
 
 import grails.plugin.springsecurity.annotation.Secured
+import org.springframework.web.multipart.MultipartHttpServletRequest
+import org.springframework.web.multipart.commons.CommonsMultipartFile
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN'])
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class PatientController {
+    def fileUploadService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+    def dashBoard(Integer max) {
+        if(params.search){
+            params.max = Math.min(max ?: 10, 100)
+            def c = Patient.createCriteria()
+            def results = c.list {
+                or {
+                    ilike("firstName", "%${params.search}%")
+                    ilike("middleName", "%${params.search}%")
+                    ilike("lastName", "%${params.search}%")
+                }
+            }
+            respond results, model:[patientInstanceCount: results.count()]
+        }else{
+            params.max = Math.min(max ?: 10, 100)
+            respond Patient.list(params), model:[patientInstanceCount: Patient.count()]
+        }
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -36,6 +57,22 @@ class PatientController {
             return
         }
 
+        MultipartHttpServletRequest mpr
+        CommonsMultipartFile uploadedImage
+        if(request instanceof MultipartHttpServletRequest){
+            mpr = (MultipartHttpServletRequest)request;
+            uploadedImage = (CommonsMultipartFile) mpr.getFile("patientPicture");
+        }
+        println("IMAGE UPLOAD:::${uploadedImage}")
+        params.patientImage= fileUploadService.getUniqueName(uploadedImage.originalFilename.toString())
+        patientInstance = new Patient(params)
+
+        if (patientInstance.save(flush: true)) {
+            if (!uploadedImage.isEmpty()){
+                fileUploadService.uploadFile(uploadedImage,patientInstance.patientImage,"/patientImages/")
+            }
+            redirect(action: "show",id: patientInstance.id)
+        }
         patientInstance.save flush:true
 
         request.withFormat {

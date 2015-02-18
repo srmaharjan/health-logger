@@ -145,6 +145,15 @@
 					</li>
 				</g:if>
 				
+				<g:if test="${patientInstance?.patientImage}">
+					<li class="fieldcontain">
+						<span id="patientImage-label" class="property-label"><g:message code="patient.patientImage.label" default="Patient Image" /></span>
+						
+						<span class="property-value" aria-labelledby="patientImage-label"><g:fieldValue bean="${patientInstance}" field="patientImage"/></span>
+						
+					</li>
+				</g:if>
+				
 				<g:if test="${patientInstance?.sex}">
 					<li class="fieldcontain">
 						<span id="sex-label" class="property-label"><g:message code="patient.sex.label" default="Sex" /></span>

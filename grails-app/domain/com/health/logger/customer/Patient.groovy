@@ -15,6 +15,7 @@ class Patient {
     String uniqueId
     Integer age
     String sex
+    String patientImage
 
     static hasMany = [doctor: Doctor, medication: Medication, acuteDisease:AcuteDisease, chronicDisease:ChronicDisease,
                       labReport:LabReport]

@@ -9,6 +9,9 @@ class Doctor {
     Date dateCreated
     Date lastUpdated
 
+    String fullName;
+
+    static transients = ['fullName']
 
     static constraints = {
     }
@@ -20,4 +23,8 @@ class Doctor {
     static hasMany = [patient:Patient]
 
     def getFullName() {firstName + " " + middleName ? middleName + " ":"" + lastName }
+
+    String toString(){
+        return getFullName()
+    }
 }
